@@ -85,24 +85,6 @@
           </ul>
         </section>
 
-        <section class="hud-panel memory-mini">
-          <div class="panel-heading"><span>MEMORIA</span><i></i></div>
-          <div class="memory-summary">
-            <div class="memory-ring" aria-hidden="true">
-              <svg viewBox="0 0 120 120" focusable="false">
-                <circle class="memory-ring-track" cx="60" cy="60" r="48"></circle>
-                <circle class="memory-ring-accent" cx="60" cy="60" r="48"></circle>
-              </svg>
-              <div class="memory-ring-value"><b id="memoryTotal">0</b><span>REGISTROS</span></div>
-            </div>
-            <div class="memory-summary-details" aria-live="polite">
-              <p><span>Perfiles docentes</span><b id="memoryProfiles">0</b></p>
-              <p><span>Datos guardados</span><b id="memoryFacts">0</b></p>
-              <p><span>Total</span><b id="memoryTotalLabel">0</b></p>
-            </div>
-          </div>
-          <small class="memory-note">Guardado en este navegador. Las conversaciones y los archivos no se almacenan como memoria.</small>
-        </section>
       </aside>
 
       <section class="center-column">
@@ -193,6 +175,35 @@
           </div>
         </section>
       </aside>
+    </section>
+
+    <section class="hud-panel memory-mini memory-reference-layout" aria-label="Memoria guardada">
+      <div class="panel-heading"><span>MEMORIA</span><i></i></div>
+      <div class="memory-reference-body">
+        <div class="memory-category-list">
+          <p><span class="memory-category-icon">◉</span><span>Perfiles docentes</span></p>
+          <p><span class="memory-category-icon">▤</span><span>Datos guardados</span></p>
+          <p class="memory-total-row"><span class="memory-category-icon">Σ</span><span>Total</span></p>
+        </div>
+        <div class="memory-dial">
+          <svg viewBox="0 0 240 240" focusable="false" aria-hidden="true">
+            <circle class="memory-dial-outer" cx="120" cy="120" r="103"></circle>
+            <circle class="memory-dial-inner" cx="120" cy="120" r="91"></circle>
+            <circle class="memory-dial-cyan" cx="120" cy="120" r="82"></circle>
+            <circle class="memory-dial-amber" cx="120" cy="120" r="82"></circle>
+          </svg>
+          <div class="memory-dial-value"><b id="memoryTotal" aria-label="Total de registros de memoria">0</b><span>REGISTROS</span></div>
+        </div>
+        <div class="memory-count-list" aria-live="polite">
+          <b id="memoryProfiles" aria-label="Perfiles docentes guardados">0</b>
+          <b id="memoryFacts" aria-label="Datos guardados">0</b>
+          <b id="memoryTotalLabel" aria-label="Total de registros guardados">0</b>
+        </div>
+      </div>
+      <div class="memory-reference-footer">
+        <span class="memory-local-status">● MEMORIA LOCAL</span>
+        <small>Perfiles y datos guardados en este navegador. Las conversaciones y los archivos no se almacenan.</small>
+      </div>
     </section>
 
     <section class="bottom-grid">
