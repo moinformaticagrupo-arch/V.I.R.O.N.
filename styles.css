@@ -3259,10 +3259,19 @@ h1 span { color: var(--cyan); }
 .data-list li, .memory-mini p { display: flex; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 10px; }
 .data-list b, .memory-mini b { color: var(--text); font-weight: 700; }
 .memory-mini { padding-bottom: 14px; }
-.memory-mini p { padding: 6px 14px; margin: 0; }
-.progress { height: 8px; margin: 12px 14px 6px; border-radius: 20px; background: #0b2639; overflow: hidden; }
-.progress span { display: block; height: 100%; background: linear-gradient(90deg, var(--cyan), var(--blue)); box-shadow: 0 0 15px var(--cyan); }
-.memory-mini > small { display: block; padding: 0 14px; text-align: right; color: var(--muted); font: 9px monospace; }
+.memory-summary { display: grid; grid-template-columns: minmax(92px, .85fr) minmax(0, 1.15fr); align-items: center; gap: 4px; padding: 8px 12px 12px; }
+.memory-ring { position: relative; width: min(100%, 132px); aspect-ratio: 1; justify-self: center; }
+.memory-ring svg { display: block; width: 100%; height: 100%; transform: rotate(-90deg); }
+.memory-ring circle { fill: none; stroke-width: 5; }
+.memory-ring-track { stroke: rgba(50, 192, 232, .16); }
+.memory-ring-accent { stroke: var(--cyan); stroke-dasharray: 96 302; stroke-linecap: round; filter: drop-shadow(0 0 4px rgba(32, 201, 255, .7)); }
+.memory-ring-value { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+.memory-ring-value b { color: var(--cyan-bright); font: 700 clamp(19px, 2vw, 27px) monospace; text-shadow: 0 0 12px rgba(32, 201, 255, .5); }
+.memory-ring-value span { color: var(--muted); font: 8px monospace; letter-spacing: .08em; }
+.memory-summary-details { display: grid; gap: 7px; min-width: 0; }
+.memory-summary-details p { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin: 0; color: var(--muted); font-size: 10px; }
+.memory-summary-details b { flex: 0 0 auto; color: var(--text); font: 700 12px monospace; }
+.memory-mini > .memory-note { display: block; padding: 0 14px; text-align: left; color: var(--muted); font: 9px/1.5 monospace; }
 
 .status-strip {
   display: flex;
