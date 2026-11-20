@@ -71,20 +71,6 @@
           <div class="global-footer"><span>● SISTEMA DE GEOLOCALIZACIÓN ACTIVO</span><span>SECURE LINK</span></div>
         </section>
 
-        <section class="hud-panel system-panel">
-          <div class="panel-heading"><span>ESTADO DEL SISTEMA</span><i></i></div>
-          <div class="metric-grid">
-            <div class="metric"><b>CPU</b><strong>12%</strong><span></span></div>
-            <div class="metric"><b>RAM</b><strong>48%</strong><span></span></div>
-            <div class="metric"><b>DISCO</b><strong>32%</strong><span></span></div>
-          </div>
-          <ul class="data-list">
-            <li><span>◈ Procesos en ejecución</span><b>184</b></li>
-            <li><span>⌁ Red (Descarga)</span><b>12.4 Mbps</b></li>
-            <li><span>⌁ Red (Subida)</span><b>3.2 Mbps</b></li>
-          </ul>
-        </section>
-
         <section class="hud-panel memory-mini memory-reference-layout" aria-label="Memoria guardada">
           <div class="panel-heading"><span>MEMORIA</span><i></i></div>
           <div class="memory-reference-body">
@@ -199,6 +185,39 @@
           </div>
         </section>
       </aside>
+    </section>
+
+    <section class="hud-panel system-panel system-reference-layout" aria-label="Estado del sistema">
+      <div class="panel-heading"><span>ESTADO DEL SISTEMA</span><i></i></div>
+      <div class="system-gauges">
+        <article class="system-gauge">
+          <div class="system-dial system-dial-cpu">
+            <svg viewBox="0 0 180 180" aria-hidden="true"><circle class="dial-track" cx="90" cy="90" r="76"></circle><circle class="dial-ticks" cx="90" cy="90" r="66"></circle><circle class="dial-accent" cx="90" cy="90" r="76"></circle></svg>
+            <div class="system-dial-value"><span>CPU</span><b id="cpuThreads">—</b><small id="cpuDetail">Hilos no informados</small></div>
+          </div>
+          <p class="system-gauge-caption">HILOS LÓGICOS · USO NO DISPONIBLE</p>
+        </article>
+        <article class="system-gauge">
+          <div class="system-dial system-dial-ram">
+            <svg viewBox="0 0 180 180" aria-hidden="true"><circle class="dial-track" cx="90" cy="90" r="76"></circle><circle class="dial-ticks" cx="90" cy="90" r="66"></circle><circle class="dial-accent" cx="90" cy="90" r="76"></circle></svg>
+            <div class="system-dial-value"><span>RAM</span><b id="deviceRam">—</b><small id="ramDetail">No informada</small></div>
+          </div>
+          <p class="system-gauge-caption">RAM APROX. · USO NO DISPONIBLE</p>
+        </article>
+        <article class="system-gauge">
+          <div class="system-dial system-dial-storage">
+            <svg viewBox="0 0 180 180" aria-hidden="true"><circle class="dial-track" cx="90" cy="90" r="76"></circle><circle class="dial-ticks" cx="90" cy="90" r="66"></circle><circle class="dial-storage" id="storageDial" cx="90" cy="90" r="76"></circle></svg>
+            <div class="system-dial-value"><span>V.I.R.O.N.</span><b id="siteStorage">—</b><small id="storageDetail">Almacenamiento del sitio</small></div>
+          </div>
+          <p class="system-gauge-caption">ALMACENAMIENTO ESTIMADO DE ESTE SITIO</p>
+        </article>
+      </div>
+      <div class="system-readouts">
+        <div><span class="readout-icon">⌁</span><span>Estado de internet</span><b id="networkStatus">Comprobando…</b></div>
+        <div><span class="readout-icon">↓</span><span>Descarga estimada</span><b id="networkDownlink">No disponible</b></div>
+        <div><span class="readout-icon">↑</span><span>Velocidad de subida</span><b>No expuesta por el navegador</b></div>
+      </div>
+      <small class="system-privacy-note">Los anillos de CPU y RAM son visuales, no porcentajes. El navegador no expone el uso real de CPU/RAM, el disco completo ni los procesos del dispositivo.</small>
     </section>
 
     <section class="bottom-grid">
