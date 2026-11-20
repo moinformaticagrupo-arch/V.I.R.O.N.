@@ -1,0 +1,10 @@
+{
+  "name": "V.I.R.O.N. — Asistente Personal",
+  "short_name": "V.I.R.O.N.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#07111f",
+  "lang": "es-AR"
+}
+

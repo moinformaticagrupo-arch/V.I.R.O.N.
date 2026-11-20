@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#030b14" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>V.I.R.O.N. — Tutor técnico</title>
+</head>
+<body data-ai-state="online">
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <p class="eyebrow"><i></i> V.I.R.O.N. PERSONAL OPERATING SYSTEM</p>
+        <h1>V.I.R.O.N.</h1>
+        <p class="tagline">Tu asistente. Siempre contigo.</p>
+      </div>
+
+      <div class="header-center">
+        <span class="header-line"></span>
+        <span class="header-label">NEURAL COMMAND INTERFACE</span>
+        <span class="header-line"></span>
+      </div>
+
+      <div class="header-actions">
+        <span id="clock" class="clock"></span>
+        <button id="voiceSettings" class="sound-button" aria-label="Elegir voz" title="Elegir voz">⚙</button>
+        <button id="soundButton" class="sound-button" aria-label="Activar o silenciar voz" title="Voz activada">◖))</button>
+        <button id="voiceButton" class="icon-button" aria-label="Hablar con V.I.R.O.N." title="Hablar">⌁</button>
+      </div>
+    </header>
+
+    <section class="hud-layout">
+      <aside class="side-column left-column">
+        <section class="hud-panel location-panel">
+          <div class="panel-heading"><span>INFORMACIÓN GLOBAL</span><i></i></div>
+          <div class="global-selector-row">
+            <label for="globalCountry">PAÍS</label>
+            <select id="globalCountry" aria-label="Seleccionar país">
+              <option value="AR" selected>ARGENTINA</option>
+              <option value="UY">URUGUAY</option>
+              <option value="CL">CHILE</option>
+              <option value="BR">BRASIL</option>
+              <option value="US">ESTADOS UNIDOS</option>
+            </select>
+            <label for="globalProvince">PROVINCIA</label>
+            <select id="globalProvince" aria-label="Seleccionar provincia">
+              <option selected>BUENOS AIRES</option>
+              <option>CÓRDOBA</option>
+              <option>SANTA FE</option>
+              <option>MENDOZA</option>
+              <option>TUCUMÁN</option>
+            </select>
+          </div>
+          <div class="global-content">
+            <div class="planet-stage">
+              <div class="planet-grid"></div>
+              <div class="planet"><span>◉</span></div>
+              <span class="orbit orbit-one"></span><span class="orbit orbit-two"></span>
+              <span class="scan-line"></span>
+              <b class="planet-tag">LIVE // GEO</b>
+            </div>
+            <div class="telemetry">
+              <div class="telemetry-item"><span class="telemetry-icon">⌖</span><div><b>UBICACIÓN</b><p>Buenos Aires, AR</p></div></div>
+              <div class="telemetry-item"><span class="telemetry-icon">☁</span><div><b>CLIMA</b><p>18°C <small>Parcialmente nublado</small></p></div></div>
+              <div class="telemetry-item"><span class="telemetry-icon">◷</span><div><b>HORA LOCAL</b><p><span id="localTime">15:42</span></p></div></div>
+              <div class="telemetry-item"><span class="telemetry-icon">▣</span><div><b>ACTIVIDAD</b><p>3 tareas pendientes</p></div></div>
+            </div>
+          </div>
+          <div class="global-footer"><span>● SISTEMA DE GEOLOCALIZACIÓN ACTIVO</span><span>SECURE LINK</span></div>
+        </section>
+
+        <section class="hud-panel system-panel">
+          <div class="panel-heading"><span>ESTADO DEL SISTEMA</span><i></i></div>
+          <div class="metric-grid">
+            <div class="metric"><b>CPU</b><strong>12%</strong><span></span></div>
+            <div class="metric"><b>RAM</b><strong>48%</strong><span></span></div>
+            <div class="metric"><b>DISCO</b><strong>32%</strong><span></span></div>
+          </div>
+          <ul class="data-list">
+            <li><span>◈ Procesos en ejecución</span><b>184</b></li>
+            <li><span>⌁ Red (Descarga)</span><b>12.4 Mbps</b></li>
+            <li><span>⌁ Red (Subida)</span><b>3.2 Mbps</b></li>
+          </ul>
+        </section>
+
+        <section class="hud-panel memory-mini">
+          <div class="panel-heading"><span>MEMORIA</span><i></i></div>
+          <p><span>Conversaciones</span><b>12.4 GB</b></p>
+          <p><span>Archivos</span><b>8.7 GB</b></p>
+          <p><span>Total</span><b>21.1 GB</b></p>
+          <div class="progress"><span style="width:42%"></span></div>
+          <small>42% UTILIZADO</small>
+        </section>
+      </aside>
+
+      <section class="center-column">
+        <div class="status-strip">
+          <span>◈</span>
+          <strong id="centerStatus">ANALIZANDO…</strong>
+          <span>◈</span>
+        </div>
+
+        <section class="command-deck">
+          <div class="deck-grid"></div>
+          <div class="core" aria-hidden="true">
+            <div class="core-axis axis-x"></div>
+            <div class="core-axis axis-y"></div>
+            <div class="ring ring-one"></div>
+            <div class="ring ring-two"></div>
+            <div class="ring ring-three"></div>
+            <div class="orb"><span>V.I.R.O.N.</span></div>
+          </div>
+
+          <div class="core-label left-label"><span>◉</span> PENSAMIENTO</div>
+          <div class="core-label left-label label-two"><span>◉</span> MEMORIA</div>
+          <div class="core-label left-label label-three"><span>◉</span> HERRAMIENTAS</div>
+          <div class="core-label right-label"><span>◉</span> Gemini</div>
+          <div class="core-label right-label label-two"><span>◉</span> OpenAI</div>
+          <div class="core-label right-label label-three"><span>◉</span> Ollama</div>
+
+          <div class="system-readout">
+            <p>V.I.R.O.N. PERSONAL OS</p>
+            <strong>LISTO PARA AYUDAR</strong>
+            <small>VOZ · ORGANIZACIÓN · INFORMACIÓN</small>
+          </div>
+
+          <div class="status-card">
+            <span>ESTADO</span>
+            <b>OPERATIVO</b>
+            <em>▰ ▰ ▰ ▰ ▰</em>
+          </div>
+        </section>
+
+        <section class="dashboard" aria-label="Panel de control">
+          <article class="panel">
+            <p>PRÓXIMA ACCIÓN</p>
+            <strong id="nextTask">Sin recordatorios</strong>
+            <button id="addTask" class="text-button">+ AGREGAR</button>
+          </article>
+          <article class="panel">
+            <p>AGENTE WINDOWS</p>
+            <strong id="agentState"><i class="online-dot"></i> COMPROBANDO…</strong>
+            <small id="agentDetail">Control local de aplicaciones</small>
+          </article>
+          <article class="panel">
+            <p>MEMORIA</p>
+            <strong id="memoryCount">0 DATOS</strong>
+            <button id="openMemory" class="text-button">VER</button>
+          </article>
+        </section>
+      </section>
+
+      <aside class="side-column right-column">
+        <section class="hud-panel assistant-panel">
+          <div class="assistant-head">
+            <div class="avatar">◉</div>
+            <div><strong>V.I.R.O.N.</strong><small>En línea · Listo para ayudarte</small></div>
+          </div>
+          <div class="assistant-bubble">Hola, Red Hot.<br />¿En qué puedo ayudarte hoy?</div>
+          <div class="assistant-actions">
+            <button data-prompt="Buscar información en internet">◉ Buscar información en internet <span>›</span></button>
+            <button data-prompt="Abrir una aplicación">◉ Abrir una aplicación <span>›</span></button>
+            <button data-prompt="Organizar mi día">◉ Organizar mi día <span>›</span></button>
+            <button data-prompt="Revisar mi sistema">◉ Revisar mi sistema <span>›</span></button>
+            <button data-prompt="¿Qué puedes hacer?">◉ Otra cosa… <span>›</span></button>
+          </div>
+          <div class="waveform" aria-hidden="true"></div>
+        </section>
+
+        <section class="hud-panel quick-panel">
+          <div class="panel-heading"><span>ACCIONES RÁPIDAS</span><i></i></div>
+          <div class="quick-grid">
+            <button data-action="chrome">◉<small>Abrir Chrome</small></button>
+            <button data-action="vscode">⌘<small>VS Code</small></button>
+            <button data-action="discord">◈<small>Discord</small></button>
+            <button data-action="spotify">♫<small>Spotify</small></button>
+            <button data-action="explorer">▣<small>Explorador</small></button>
+            <button data-action="terminal">〉_<small>Terminal</small></button>
+            <button data-action="settings">⚙<small>Configuración</small></button>
+            <button data-action="powershell">›_<small>PowerShell</small></button>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="bottom-grid">
+      <section class="hud-panel task-center" aria-label="Centro de tareas">
+        <div class="section-heading"><p>ÓRDENES Y PENDIENTES</p><span id="taskProgress">0 / 0</span></div>
+        <div id="taskList" class="task-list"><p class="empty">Sin tareas activas, señor.</p></div>
+      </section>
+
+      <section class="hud-panel applications-panel">
+        <div class="panel-heading"><span>TUS APLICACIONES</span><i></i></div>
+        <div class="app-row">
+          <button data-action="chrome">◉<small>Chrome</small></button>
+          <button data-action="vscode">⌘<small>VS Code</small></button>
+          <button data-action="spotify">♫<small>Spotify</small></button>
+          <button data-action="discord">◈<small>Discord</small></button>
+          <button data-action="notion">N<small>Notion</small></button>
+          <button data-action="photoshop">Ps<small>Photoshop</small></button>
+          <button data-action="more">+<small>Más</small></button>
+        </div>
+      </section>
+
+      <section class="hud-panel voice-panel">
+        <div class="panel-heading"><span>SISTEMA DE VOZ</span><i></i></div>
+        <div class="waveform large-wave" aria-hidden="true"></div>
+        <strong>Micrófono activado</strong>
+        <small>V.I.R.O.N. te escucha…</small>
+      </section>
+    </section>
+
+    <section class="routines" aria-label="Rutinas inteligentes">
+      <p>RUTINAS RÁPIDAS</p>
+      <div>
+        <button data-routine="modo estudio">◫ ESTUDIO</button>
+        <button data-routine="modo cine">▷ CINE</button>
+        <button data-routine="modo noche">☾ NOCHE</button>
+        <button data-routine="resumen diario">◌ RESUMEN</button>
+      </div>
+    </section>
+
+    <section class="care-mode" aria-label="Accesibilidad y acompañamiento">
+      <div><p>ASISTENCIA INCLUSIVA</p><small>Diseñado para todas las edades.</small></div>
+      <button id="seniorMode">Aa MODO CLARO</button>
+      <button id="kidsMode">★ MODO INFANTIL</button>
+      <button id="companionMode">◉ ACOMPAÑAMIENTO</button>
+    </section>
+
+    <section id="chat" class="chat" aria-live="polite">
+      <article class="message assistant">Hola, estoy listo para ayudarte y conocerte. Contame un poco de vos: ¿cómo te llamás y qué materia enseñás?</article>
+    </section>
+
+    <section class="suggestions" aria-label="Acciones rápidas">
+      <button data-prompt="¿Quién te creó?"><span>01</span> IDENTIDAD</button>
+      <button data-prompt="Recuérdame tomar agua a las 16:00"><span>02</span> RECORDATORIO</button>
+      <button data-prompt="¿Qué puedes hacer?"><span>03</span> CAPACIDADES</button>
+    </section>
+
+    <section class="modules" aria-label="Módulos de V.I.R.O.N.">
+      <button data-action="music"><b>♫</b><span>MÚSICA<small>Spotify / YouTube</small></span></button>
+      <button data-action="calendar"><b>◫</b><span>AGENDA<small>Próximamente</small></span></button>
+      <button data-action="gestures"><b>⌁</b><span>GESTOS<small>Cámara web</small></span></button>
+      <button data-action="devices"><b>◈</b><span>DISPOSITIVOS<small>PC · Celular · TV</small></span></button>
+    </section>
+
+    <form id="composer" class="composer">
+      <input id="prompt" autocomplete="off" placeholder="Escribe una orden o pregunta…" aria-label="Mensaje para V.I.R.O.N." />
+      <button type="submit">ENVIAR ↗</button>
+    </form>
+
+    <dialog id="taskDialog"><form method="dialog" id="taskForm"><p>NUEVA TAREA</p><input id="taskInput" placeholder="Ej.: llamar a mamá a las 18:00" autocomplete="off" /><div><button value="cancel">Cancelar</button><button value="save">Guardar</button></div></form></dialog>
+    <dialog id="memoryDialog">
+  <form method="dialog" id="memoryForm">
+    <p>MEMORIA Y PERFILES DOCENTES</p>
+    <small>Los perfiles se guardan en este dispositivo. V.I.R.O.N. solo los usa en sus respuestas cuando aceptás guardarlos; al conversar, sus datos de perfil se envían al proveedor de IA configurado. El nacimiento es opcional.</small>
+    <label class="voice-control">PERFIL
+      <select id="teacherProfileSelect" aria-label="Seleccionar perfil docente"><option value="__new__">+ Nuevo profesor</option></select>
+    </label>
+    <label class="voice-control">NOMBRE<input id="teacherName" autocomplete="off" placeholder="Cómo prefiere que le llamen" /></label>
+    <label class="voice-control">MATERIA<input id="teacherSubject" autocomplete="off" placeholder="Matemática, Inglés, Electrónica…" /></label>
+    <label class="voice-control">ESPECIALIDAD / NIVEL<input id="teacherSpecialty" autocomplete="off" placeholder="Área técnica o nivel educativo" /></label>
+    <label class="voice-control">FECHA DE NACIMIENTO (OPCIONAL)<input id="teacherBirthday" type="date" /></label>
+    <label class="voice-control">ESTILO DE CLASE<input id="teacherStyle" autocomplete="off" placeholder="Ej.: ejercicios prácticos y explicaciones paso a paso" /></label>
+    <label class="consent-row"><input id="teacherProfileConsent" type="checkbox" /> Autorizo guardar este perfil en este dispositivo y usarlo para personalizar las respuestas de V.I.R.O.N.</label>
+    <div class="companion-actions"><button id="newTeacherProfile" type="button">Nuevo perfil</button><button id="saveTeacherProfile" type="button">Guardar perfil</button></div>
+    <hr />
+    <p>OTROS DATOS DE MEMORIA</p>
+    <div id="memoryList" class="memory-list"></div>
+    <input id="memoryInput" placeholder="Ej.: Prefiero que use ejemplos de circuitos" autocomplete="off" />
+    <div><button id="clearMemory" type="button">Borrar toda la memoria</button><button value="cancel">Cerrar</button><button value="save">Recordar dato</button></div>
+  </form>
+</dialog>
+    <dialog id="gestureDialog" class="gesture-dialog"><div class="gesture-head"><div><p>CONTROL GESTUAL</p><small>Apunte a un botón y junte pulgar e índice para activarlo.</small></div><button id="closeGestures" aria-label="Cerrar">×</button></div><div class="gesture-stage"><video id="gestureVideo" playsinline muted></video><canvas id="gestureCanvas"></canvas><div class="gesture-hud"><div class="gesture-core"><span>V.I.R.O.N.</span><small>GESTURE LINK</small></div><button data-gesture-command="Abrir archivos">ARCHIVOS</button><button data-gesture-command="Mostrar imágenes">IMÁGENES</button><button data-gesture-command="Abrir música">MÚSICA</button></div><p id="faceStatus" class="face-status">ROSTRO · BUSCANDO</p><p id="gestureStatus" class="gesture-status">Inicializando cámara…</p></div></dialog>
+    <dialog id="companionDialog" class="companion-dialog"><form method="dialog"><p>SESIÓN DE ACOMPAÑAMIENTO</p><small>V.I.R.O.N. escucha solo mientras esta sesión esté activa. Decí “V.I.R.O.N.” antes de pedir ayuda. No graba ni guarda el audio.</small><div class="companion-actions"><button value="cancel">Cancelar</button><button id="startCompanion" type="button">Iniciar conversación</button><button id="stopCompanion" type="button" disabled>Detener</button></div><p id="companionStatus" class="companion-status">Micrófono desactivado.</p><div id="companionTranscript" class="companion-transcript" aria-live="polite">Todavía no se detectaron palabras.</div></form></dialog>
+    <dialog id="voiceDialog" class="companion-dialog">
+  <form method="dialog">
+    <p>IDIOMAS Y VOZ</p>
+    <small>Escribí un idioma o código BCP-47 (por ejemplo, English / en-US o 中文 / zh-CN). V.I.R.O.N. intentará entender y responder en ese idioma. El reconocimiento depende de los idiomas que admita tu navegador.</small>
+    <label class="voice-control">IDIOMA DE ENTRADA Y RESPUESTA
+      <input id="assistantLanguage" list="languageSuggestions" value="es-AR" autocomplete="off" aria-label="Idioma de conversación" placeholder="Ej.: fr-FR o Français" />
+    </label>
+    <datalist id="languageSuggestions">
+      <option value="es-AR" label="Español (Argentina)"></option><option value="es-ES" label="Español"></option><option value="en-US" label="English (US)"></option><option value="en-GB" label="English (UK)"></option><option value="fr-FR" label="Français"></option><option value="it-IT" label="Italiano"></option><option value="pt-BR" label="Português (Brasil)"></option><option value="pt-PT" label="Português (Portugal)"></option><option value="zh-CN" label="中文 (简体)</option><option value="zh-TW" label="中文 (繁體)"></option><option value="ja-JP" label="日本語"></option><option value="ko-KR" label="한국어"></option><option value="de-DE" label="Deutsch"></option><option value="ru-RU" label="Русский"></option><option value="ar-SA" label="العربية"></option><option value="hi-IN" label="हिन्दी"></option><option value="nl-NL" label="Nederlands"></option><option value="tr-TR" label="Türkçe"></option><option value="he-IL" label="עברית"></option><option value="pl-PL" label="Polski"></option><option value="uk-UA" label="Українська"></option><option value="sv-SE" label="Svenska"></option><option value="da-DK" label="Dansk"></option><option value="no-NO" label="Norsk"></option><option value="fi-FI" label="Suomi"></option><option value="el-GR" label="Ελληνικά"></option><option value="cs-CZ" label="Čeština"></option><option value="ro-RO" label="Română"></option><option value="hu-HU" label="Magyar"></option><option value="th-TH" label="ไทย"></option><option value="vi-VN" label="Tiếng Việt"></option><option value="id-ID" label="Bahasa Indonesia"></option><option value="ms-MY" label="Bahasa Melayu"></option><option value="fil-PH" label="Filipino"></option><option value="bn-BD" label="বাংলা"></option><option value="ur-PK" label="اردو"></option><option value="fa-IR" label="فارسی"></option><option value="sw-KE" label="Kiswahili"></option><option value="ca-ES" label="Català"></option><option value="eu-ES" label="Euskara"></option><option value="gl-ES" label="Galego"></option><option value="gu-IN" label="ગુજરાતી"></option><option value="ta-IN" label="தமிழ்"></option><option value="te-IN" label="తెలుగు"></option><option value="mr-IN" label="मराठी"></option><option value="az-AZ" label="Azərbaycan dili"></option><option value="am-ET" label="አማርኛ"></option><option value="af-ZA" label="Afrikaans"></option><option value="sr-RS" label="Српски"></option><option value="hr-HR" label="Hrvatski"></option><option value="bg-BG" label="Български"></option><option value="sk-SK" label="Slovenčina"></option><option value="sl-SI" label="Slovenščina"></option><option value="lt-LT" label="Lietuvių"></option><option value="lv-LV" label="Latviešu"></option><option value="et-EE" label="Eesti"></option><option value="is-IS" label="Íslenska"></option><option value="ga-IE" label="Gaeilge"></option><option value="cy-GB" label="Cymraeg"></option><option value="yo-NG" label="Yorùbá"></option><option value="ha-NG" label="Hausa"></option><option value="zu-ZA" label="isiZulu"></option><option value="km-KH" label="ខ្មែរ"></option><option value="lo-LA" label="ລາວ"></option><option value="my-MM" label="မြန်မာ"></option><option value="ne-NP" label="नेपाली"></option><option value="si-LK" label="සිංහල"></option><option value="mn-MN" label="Монгол"></option><option value="ka-GE" label="ქართული"></option><option value="hy-AM" label="Հայերեն"></option><option value="sq-AL" label="Shqip"></option><option value="mk-MK" label="Македонски"></option><option value="bs-BA" label="Bosanski"></option><option value="uz-UZ" label="Oʻzbekcha"></option><option value="kk-KZ" label="Қазақша"></option><option value="ps-AF" label="پښتو"></option><option value="ku-TR" label="Kurdî"></option><option value="yi" label="ייִדיש"></option><option value="la" label="Latina"></option>
+    </datalist>
+    <label class="voice-control">VOZ INSTALADA<select id="voiceSelect" aria-label="Seleccionar voz instalada"></select></label>
+    <label class="voice-control">ESTILO<select id="voiceStyle"><option value="professional">Profesional sereno</option><option value="warm">Cercano y cálido</option><option value="brief">Directo y ágil</option></select></label>
+    <label class="voice-control">VELOCIDAD <output id="rateValue">Normal</output><input id="voiceRate" type="range" min="0.82" max="1.12" step="0.01" value="0.98" /></label>
+    <label class="voice-control">TONO <output id="pitchValue">Natural</output><input id="voicePitch" type="range" min="0.82" max="1.12" step="0.01" value="0.96" /></label>
+    <div class="companion-actions"><button value="cancel">Cerrar</button><button id="testVoice" type="button">Probar voz</button><button value="save">Guardar</button></div>
+    <p id="voiceHint" class="companion-status"></p>
+  </form>
+</dialog>
+    <dialog id="actionDialog" class="companion-dialog"><form method="dialog"><p>CONFIRMAR ACCIÓN</p><small id="actionDescription"></small><div class="companion-actions"><button value="cancel">Cancelar</button><button id="confirmAction" type="button">Confirmar y abrir</button></div></form></dialog>
+    <dialog id="devicesDialog" class="companion-dialog"><form method="dialog"><p>DISPOSITIVOS V.I.R.O.N.</p><small>Cada equipo se vincula por separado y solo puede abrir las apps que autorices.</small><div class="device-list"><div><b>PC WINDOWS</b><span>Disponible con el Agente Windows activo.</span></div><div><b>ANDROID / ANDROID TV</b><span>Requiere una app compañera de V.I.R.O.N. instalada.</span></div><div><b>IPHONE / APPLE TV</b><span>Requiere app nativa o Atajos autorizados por el dueño.</span></div></div><div class="companion-actions"><button value="cancel">Cerrar</button></div></form></dialog>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
