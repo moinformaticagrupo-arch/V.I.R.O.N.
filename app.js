@@ -1067,6 +1067,7 @@ document.querySelector("#saveTeacherProfile")?.addEventListener("click", () => {
     else profiles.push(profile);
     localStorage.setItem("jarvis-teacher-profiles", JSON.stringify(profiles));
     localStorage.setItem("jarvis-active-teacher-profile", profile.id);
+    renderMemorySummary();
     renderTeacherProfileControls(profile.id);
     addMessage(`Perfil docente guardado en este dispositivo para ${profile.name || profile.subject}.`, "assistant");
 });
@@ -1098,6 +1099,8 @@ function renderMemories() {
 
     const items =
         memories();
+
+    renderMemorySummary();
 
     memoryCount.textContent =
         `${items.length} ${
@@ -1135,6 +1138,27 @@ function renderMemories() {
         memoryList.append(row);
     });
 }
+
+function renderMemorySummary() {
+    const factCount = memories().length;
+    const profileCount = teacherProfiles().length;
+    const totalCount = factCount + profileCount;
+    const total = document.querySelector("#memoryTotal");
+    const totalLabel = document.querySelector("#memoryTotalLabel");
+    const facts = document.querySelector("#memoryFacts");
+    const profiles = document.querySelector("#memoryProfiles");
+
+    if (total) total.textContent = String(totalCount);
+    if (totalLabel) totalLabel.textContent = String(totalCount);
+    if (facts) facts.textContent = String(factCount);
+    if (profiles) profiles.textContent = String(profileCount);
+}
+
+window.addEventListener("storage", event => {
+    if (["jarvis-memories", "jarvis-teacher-profiles"].includes(event.key)) {
+        renderMemories();
+    }
+});
 
 renderMemories();
 
