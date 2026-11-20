@@ -87,11 +87,21 @@
 
         <section class="hud-panel memory-mini">
           <div class="panel-heading"><span>MEMORIA</span><i></i></div>
-          <p><span>Conversaciones</span><b>12.4 GB</b></p>
-          <p><span>Archivos</span><b>8.7 GB</b></p>
-          <p><span>Total</span><b>21.1 GB</b></p>
-          <div class="progress"><span style="width:42%"></span></div>
-          <small>42% UTILIZADO</small>
+          <div class="memory-summary">
+            <div class="memory-ring" aria-hidden="true">
+              <svg viewBox="0 0 120 120" focusable="false">
+                <circle class="memory-ring-track" cx="60" cy="60" r="48"></circle>
+                <circle class="memory-ring-accent" cx="60" cy="60" r="48"></circle>
+              </svg>
+              <div class="memory-ring-value"><b id="memoryTotal">0</b><span>REGISTROS</span></div>
+            </div>
+            <div class="memory-summary-details" aria-live="polite">
+              <p><span>Perfiles docentes</span><b id="memoryProfiles">0</b></p>
+              <p><span>Datos guardados</span><b id="memoryFacts">0</b></p>
+              <p><span>Total</span><b id="memoryTotalLabel">0</b></p>
+            </div>
+          </div>
+          <small class="memory-note">Guardado en este navegador. Las conversaciones y los archivos no se almacenan como memoria.</small>
         </section>
       </aside>
 
