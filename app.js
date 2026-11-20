@@ -1154,6 +1154,65 @@ function renderMemorySummary() {
     if (profiles) profiles.textContent = String(profileCount);
 }
 
+function formatStorageSize(value) {
+    if (!Number.isFinite(value) || value < 0) return "No disponible";
+    if (value < 1024) return `${Math.round(value)} B`;
+    if (value < 1024 * 1024) return `${(value / 1024).toFixed(1)} KB`;
+    if (value < 1024 * 1024 * 1024) return `${(value / (1024 * 1024)).toFixed(1)} MB`;
+    return `${(value / (1024 * 1024 * 1024)).toFixed(2)} GB`;
+}
+
+async function renderSystemStatus() {
+    const cpuThreads = document.querySelector("#cpuThreads");
+    const cpuDetail = document.querySelector("#cpuDetail");
+    const deviceRam = document.querySelector("#deviceRam");
+    const ramDetail = document.querySelector("#ramDetail");
+    const storageValue = document.querySelector("#siteStorage");
+    const storageDetail = document.querySelector("#storageDetail");
+    const storageDial = document.querySelector("#storageDial");
+    const networkStatus = document.querySelector("#networkStatus");
+    const networkDownlink = document.querySelector("#networkDownlink");
+
+    const reportedThreads = Number(navigator.hardwareConcurrency);
+    if (cpuThreads) cpuThreads.textContent = Number.isFinite(reportedThreads) && reportedThreads > 0 ? String(reportedThreads) : "No disponible";
+    if (cpuDetail) cpuDetail.textContent = Number.isFinite(reportedThreads) && reportedThreads > 0 ? "hilos lógicos" : "el navegador no lo informa";
+
+    const approximateRam = Number(navigator.deviceMemory);
+    if (deviceRam) deviceRam.textContent = Number.isFinite(approximateRam) && approximateRam > 0 ? `~${approximateRam} GB` : "No disponible";
+    if (ramDetail) ramDetail.textContent = Number.isFinite(approximateRam) && approximateRam > 0 ? "capacidad aproximada" : "el navegador no lo informa";
+
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (networkStatus) networkStatus.textContent = navigator.onLine ? "Conectado" : "Sin conexión";
+    if (networkDownlink) {
+        const downlink = Number(connection?.downlink);
+        networkDownlink.textContent = Number.isFinite(downlink) && downlink > 0 ? `≈ ${downlink} Mbps` : "No disponible";
+    }
+
+    try {
+        if (!navigator.storage?.estimate) throw new Error("STORAGE_ESTIMATE_UNAVAILABLE");
+        const { usage, quota } = await navigator.storage.estimate();
+        if (!Number.isFinite(usage) || !Number.isFinite(quota) || quota <= 0) throw new Error("STORAGE_ESTIMATE_UNAVAILABLE");
+        const percentage = Math.min(100, Math.max(0, Math.round((usage / quota) * 100)));
+        if (storageValue) storageValue.textContent = `${percentage}%`;
+        if (storageDetail) storageDetail.textContent = `${formatStorageSize(usage)} / ${formatStorageSize(quota)} · estimado`;
+        if (storageDial) {
+            const circumference = 2 * Math.PI * 76;
+            storageDial.style.strokeDasharray = `${(circumference * percentage) / 100} ${circumference}`;
+        }
+    } catch {
+        if (storageValue) storageValue.textContent = "No disponible";
+        if (storageDetail) storageDetail.textContent = "el navegador no informa el uso";
+        if (storageDial) storageDial.style.strokeDasharray = "0 478";
+    }
+}
+
+renderSystemStatus();
+window.addEventListener("online", () => renderSystemStatus());
+window.addEventListener("offline", () => renderSystemStatus());
+window.addEventListener("storage", () => renderSystemStatus());
+const systemConnection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+systemConnection?.addEventListener?.("change", () => renderSystemStatus());
+
 window.addEventListener("storage", event => {
     if (["jarvis-memories", "jarvis-teacher-profiles"].includes(event.key)) {
         renderMemories();
