@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="icon" type="esaaaaes.png" sizes="192x192" href="esaaaaes.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
   <link rel="stylesheet" href="styles.css" />
   <title>V.I.R.O.N. — Tutor técnico</title>
 </head>
@@ -16,7 +16,7 @@
   <main class="shell">
     <header class="topbar">
       <div class="brand-block">
-        <img class="brand-logo" src="esaaaaes.png" alt="V.I.R.O.N., asistente personal profesional" />
+        <img class="brand-logo" src="viron-logo.png" alt="V.I.R.O.N., asistente personal profesional" />
       </div>
 
       <div class="header-center">
@@ -38,39 +38,23 @@
         <section class="hud-panel location-panel">
           <div class="panel-heading"><span>INFORMACIÓN GLOBAL</span><i></i></div>
           <div class="global-selector-row">
-            <label for="globalCountry">PAÍS</label>
-            <select id="globalCountry" aria-label="Seleccionar país">
-              <option value="AR" selected>ARGENTINA</option>
-              <option value="UY">URUGUAY</option>
-              <option value="CL">CHILE</option>
-              <option value="BR">BRASIL</option>
-              <option value="US">ESTADOS UNIDOS</option>
-            </select>
-            <label for="globalProvince">PROVINCIA</label>
-            <select id="globalProvince" aria-label="Seleccionar provincia">
-              <option selected>BUENOS AIRES</option>
-              <option>CÓRDOBA</option>
-              <option>SANTA FE</option>
-              <option>MENDOZA</option>
-              <option>TUCUMÁN</option>
-            </select>
+            <div class="global-select-group"><label for="globalCountry">PAÍS</label><select id="globalCountry" aria-label="Seleccionar país"><option value="AR" selected>ARGENTINA</option><option value="UY">URUGUAY</option><option value="CL">CHILE</option><option value="BR">BRASIL</option><option value="US">ESTADOS UNIDOS</option></select></div>
+            <div class="global-select-group"><label for="globalProvince">PROVINCIA</label><select id="globalProvince" aria-label="Seleccionar provincia"><option selected>BUENOS AIRES</option><option>CÓRDOBA</option><option>SANTA FE</option><option>MENDOZA</option><option>TUCUMÁN</option></select></div>
+            <div class="global-select-group"><label for="globalCity">CIUDAD</label><select id="globalCity" aria-label="Seleccionar ciudad"><option>Buenos Aires</option></select></div>
           </div>
           <div class="global-content">
             <div class="planet-stage">
-              <div class="planet-grid"></div>
-              <div class="planet"><span>◉</span></div>
-              <span class="orbit orbit-one"></span><span class="orbit orbit-two"></span>
-              <span class="scan-line"></span>
-              <b class="planet-tag">LIVE // GEO</b>
+              <canvas id="holo-globe" width="340" height="340" role="img" aria-label="Globo holográfico animado; el marcador representa la ciudad seleccionada"></canvas>
+              <div class="geo-caption"><span class="planet-tag">GLOBO 3D · UBICACIÓN SELECCIONADA</span><span class="coords" id="geo-coords" aria-live="polite">COORDENADAS PENDIENTES</span></div>
             </div>
             <div class="telemetry">
-              <div class="telemetry-item"><span class="telemetry-icon">⌖</span><div><b>UBICACIÓN</b><p>Buenos Aires, AR</p></div></div>
-              <div class="telemetry-item"><span class="telemetry-icon">☁</span><div><b>CLIMA</b><p>18°C <small>Parcialmente nublado</small></p></div></div>
-              <div class="telemetry-item"><span class="telemetry-icon">◷</span><div><b>HORA LOCAL</b><p><span id="localTime">15:42</span></p></div></div>
-              <div class="telemetry-item"><span class="telemetry-icon">▣</span><div><b>ACTIVIDAD</b><p>3 tareas pendientes</p></div></div>
+              <div class="telemetry-item"><span class="telemetry-icon">⌖</span><div><b>UBICACIÓN</b><p id="globalLocationText"><strong>Buscando ubicación…</strong></p></div></div>
+              <div class="telemetry-item"><span class="telemetry-icon">☁</span><div><b>CLIMA ACTUAL</b><p id="globalWeatherText"><strong>— °C</strong><small>Consultando clima real…</small></p></div></div>
+              <div class="telemetry-item"><span class="telemetry-icon">◷</span><div><b>HORA LOCAL</b><p><span id="localTime" aria-live="off">--:--:--</span></p></div></div>
+              <div class="telemetry-item"><span class="telemetry-icon">▣</span><div><b>ACTIVIDAD</b><p><strong id="globalTaskCount">0 tareas pendientes</strong></p></div></div>
             </div>
           </div>
-          <div class="global-footer"><span>● SISTEMA DE GEOLOCALIZACIÓN ACTIVO</span><span>SECURE LINK</span></div>
+          <div class="global-footer"><span>● CLIMA REAL · OPEN-METEO</span><span id="globalDataStatus">ESPERANDO DATOS</span></div>
         </section>
 
         <section class="hud-panel system-panel system-compact-layout" aria-label="Estado del sistema">
