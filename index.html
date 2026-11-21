@@ -164,6 +164,27 @@
           </div>
         </section>
 
+        <section class="dashboard" aria-label="Panel de control">
+          <article class="panel dashboard-card dashboard-next">
+            <div class="dashboard-card-heading"><p>PRÓXIMA ACCIÓN</p><span class="dashboard-card-code">01 // TAREA</span></div>
+            <svg class="dashboard-card-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M18 43h28l-4-6V27a10 10 0 0 0-20 0v10zM27 48a5 5 0 0 0 10 0"/><path d="M32 12v4"/></svg>
+            <strong id="nextTask">Sin recordatorios</strong>
+            <button id="addTask" class="text-button">+ AGREGAR</button>
+          </article>
+          <article class="panel dashboard-card dashboard-agent">
+            <div class="dashboard-card-heading"><p>AGENTE WINDOWS</p><span class="dashboard-card-code">02 // ENLACE</span></div>
+            <svg class="dashboard-card-icon" viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="14" width="40" height="29" rx="3"/><path d="M24 51h16M32 43v8M20 21l24 16M44 21 20 37"/></svg>
+            <strong id="agentState"><i class="online-dot"></i> COMPROBANDO…</strong>
+            <small class="dashboard-agent-detail" id="agentDetail">Control local de aplicaciones</small>
+          </article>
+          <article class="panel dashboard-card dashboard-memory">
+            <div class="dashboard-card-heading"><p>MEMORIA</p><span class="dashboard-card-code">03 // DATOS</span></div>
+            <svg class="dashboard-card-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="21"/><circle cx="32" cy="32" r="13"/><circle cx="32" cy="32" r="5"/><path d="M32 5v6M32 53v6M5 32h6M53 32h6M13 13l5 5M46 46l5 5M51 13l-5 5M18 46l-5 5"/></svg>
+            <strong id="memoryCount">0 DATOS</strong>
+            <button id="openMemory" class="text-button">VER</button>
+          </article>
+        </section>
+
       </section>
 
       <aside class="side-column right-column">
@@ -197,27 +218,6 @@
           </div>
         </section>
       </aside>
-    </section>
-
-    <section class="dashboard" aria-label="Panel de control">
-      <article class="panel dashboard-card dashboard-next">
-        <div class="dashboard-card-heading"><p>PRÓXIMA ACCIÓN</p><span class="dashboard-card-code">01 // TAREA</span></div>
-        <svg class="dashboard-card-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M18 43h28l-4-6V27a10 10 0 0 0-20 0v10zM27 48a5 5 0 0 0 10 0"/><path d="M32 12v4"/></svg>
-        <strong id="nextTask">Sin recordatorios</strong>
-        <button id="addTask" class="text-button">+ AGREGAR</button>
-      </article>
-      <article class="panel dashboard-card dashboard-agent">
-        <div class="dashboard-card-heading"><p>AGENTE WINDOWS</p><span class="dashboard-card-code">02 // ENLACE</span></div>
-        <svg class="dashboard-card-icon" viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="14" width="40" height="29" rx="3"/><path d="M24 51h16M32 43v8M20 21l24 16M44 21 20 37"/></svg>
-        <strong id="agentState"><i class="online-dot"></i> COMPROBANDO…</strong>
-        <small class="dashboard-agent-detail" id="agentDetail">Control local de aplicaciones</small>
-      </article>
-      <article class="panel dashboard-card dashboard-memory">
-        <div class="dashboard-card-heading"><p>MEMORIA</p><span class="dashboard-card-code">03 // DATOS</span></div>
-        <svg class="dashboard-card-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="21"/><circle cx="32" cy="32" r="13"/><circle cx="32" cy="32" r="5"/><path d="M32 5v6M32 53v6M5 32h6M53 32h6M13 13l5 5M46 46l5 5M51 13l-5 5M18 46l-5 5"/></svg>
-        <strong id="memoryCount">0 DATOS</strong>
-        <button id="openMemory" class="text-button">VER</button>
-      </article>
     </section>
 
     <section class="bottom-grid">
