@@ -734,6 +734,15 @@ function renderTasks() {
     const items =
         tasks();
 
+    const globalTaskCount =
+        document.querySelector("#globalTaskCount");
+
+    if (globalTaskCount) {
+        const pendingTasks = items.filter(item => !item.done).length;
+        globalTaskCount.textContent =
+            `${pendingTasks} ${pendingTasks === 1 ? "tarea pendiente" : "tareas pendientes"}`;
+    }
+
     const completed =
         items.filter(
             item => item.done
@@ -4945,6 +4954,165 @@ function ejecutarComando(texto) {
         requestId: 0
     };
 
+    const globeCanvas = document.getElementById("holo-globe");
+    const globeContext = globeCanvas?.getContext("2d");
+    const globeCoordinates = document.getElementById("geo-coords");
+    const globalDataStatus = document.getElementById("globalDataStatus");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let globeSize = 340;
+    let globeAngle = 0;
+
+    function formatCoordinate(value, positive, negative) {
+        if (!Number.isFinite(value)) return "—";
+        return `${Math.abs(value).toFixed(2)}° ${value < 0 ? negative : positive}`;
+    }
+
+    function updateGlobeCoordinates() {
+        if (!globeCoordinates) return;
+        if (!Number.isFinite(state.latitude) || !Number.isFinite(state.longitude)) {
+            globeCoordinates.textContent = "COORDENADAS PENDIENTES";
+            return;
+        }
+        globeCoordinates.textContent = `${formatCoordinate(state.latitude, "N", "S")} · ${formatCoordinate(state.longitude, "E", "O")}`;
+        if (reducedMotion.matches) drawHoloGlobe();
+    }
+
+    function resizeHoloGlobe() {
+        if (!globeCanvas || !globeContext) return;
+        const bounds = globeCanvas.getBoundingClientRect();
+        const size = Math.max(1, Math.min(bounds.width || 170, bounds.height || bounds.width || 170));
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        globeSize = size;
+        const pixelSize = Math.round(size * dpr);
+        if (globeCanvas.width !== pixelSize || globeCanvas.height !== pixelSize) {
+            globeCanvas.width = pixelSize;
+            globeCanvas.height = pixelSize;
+        }
+        globeContext.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function drawGlobeOrbit(ctx, cx, cy, rx, ry, tilt, satAngle) {
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(tilt);
+        ctx.strokeStyle = "rgba(0, 240, 255, 0.35)";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, rx, ry, 0, 0, Math.PI * 2);
+        ctx.stroke();
+
+        const sx = Math.cos(satAngle) * rx;
+        const sy = Math.sin(satAngle) * ry;
+        ctx.fillStyle = "#00f0ff";
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = "#00f0ff";
+        ctx.fillRect(sx - 2, sy - 2, 4, 4);
+        ctx.restore();
+    }
+
+    function drawHoloGlobe() {
+        if (!globeCanvas || !globeContext) return;
+
+        const ctx = globeContext;
+        const size = globeSize;
+        const cx = size / 2;
+        const cy = size / 2;
+        const radius = size * 0.29;
+        ctx.clearRect(0, 0, size, size);
+
+        const glow = ctx.createRadialGradient(cx, cy, radius * 0.4, cx, cy, radius * 1.25);
+        glow.addColorStop(0, "rgba(0, 240, 255, 0.18)");
+        glow.addColorStop(0.7, "rgba(0, 140, 220, 0.08)");
+        glow.addColorStop(1, "rgba(0, 140, 220, 0)");
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius * 1.25, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = "rgba(0, 80, 140, 0.15)";
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = "rgba(0, 240, 255, 0.65)";
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius - 1, 0, Math.PI * 2);
+        ctx.clip();
+        ctx.strokeStyle = "rgba(0, 240, 255, 0.22)";
+        ctx.lineWidth = 1;
+        for (let i = 0; i < 6; i++) {
+            const rotation = globeAngle + (i * Math.PI) / 6;
+            const rx = Math.max(1, Math.abs(Math.cos(rotation)) * radius);
+            ctx.beginPath();
+            ctx.ellipse(cx, cy, rx, radius, 0, 0, Math.PI * 2);
+            ctx.stroke();
+        }
+        for (let latitude = -60; latitude <= 60; latitude += 30) {
+            const radians = (latitude * Math.PI) / 180;
+            const y = cy + Math.sin(radians) * radius;
+            const latitudeRadius = Math.cos(radians) * radius;
+            ctx.beginPath();
+            ctx.ellipse(cx, y, latitudeRadius, Math.max(1, latitudeRadius * 0.22), 0, 0, Math.PI * 2);
+            ctx.stroke();
+        }
+        ctx.restore();
+
+        drawGlobeOrbit(ctx, cx, cy, radius * 1.42, radius * 0.38, -0.45, globeAngle * 1.8);
+        drawGlobeOrbit(ctx, cx, cy, radius * 1.48, radius * 0.32, 0.55, -globeAngle * 1.4 + 2);
+
+        if (Number.isFinite(state.latitude) && Number.isFinite(state.longitude)) {
+            const lat = (state.latitude * Math.PI) / 180;
+            const lon = (state.longitude * Math.PI) / 180 + globeAngle;
+            const depth = Math.cos(lat) * Math.cos(lon);
+            if (depth > 0) {
+                const pinX = cx + Math.cos(lat) * Math.sin(lon) * radius;
+                const pinY = cy - Math.sin(lat) * radius;
+                const pulse = (Math.sin(globeAngle * 4) + 1) * 3 + 4;
+                ctx.strokeStyle = "rgba(255, 170, 0, 0.75)";
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.arc(pinX, pinY, pulse, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.fillStyle = "#ffaa00";
+                ctx.shadowBlur = 12;
+                ctx.shadowColor = "#ffaa00";
+                ctx.beginPath();
+                ctx.arc(pinX, pinY, 3, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        if (!reducedMotion.matches) {
+            globeAngle += 0.012;
+            window.requestAnimationFrame(drawHoloGlobe);
+        }
+    }
+
+    if (globeCanvas && globeContext) {
+        resizeHoloGlobe();
+        drawHoloGlobe();
+        if ("ResizeObserver" in window) {
+            new ResizeObserver(() => {
+                resizeHoloGlobe();
+                if (reducedMotion.matches) drawHoloGlobe();
+            }).observe(globeCanvas);
+        } else {
+            window.addEventListener("resize", () => {
+                resizeHoloGlobe();
+                if (reducedMotion.matches) drawHoloGlobe();
+            }, { passive: true });
+        }
+        reducedMotion.addEventListener?.("change", () => drawHoloGlobe());
+    }
+
+    updateGlobeCoordinates();
+
     function fillSelect(select, values, selectedValue = "") {
         select.replaceChildren();
         values.forEach(value => {
@@ -4995,6 +5163,7 @@ function ejecutarComando(texto) {
     }
 
     function setWeatherLoading() {
+        if (globalDataStatus) globalDataStatus.textContent = "CONSULTANDO CLIMA";
         if (!weatherText) return;
         weatherText.innerHTML = "";
         const main = document.createElement("strong");
@@ -5005,6 +5174,7 @@ function ejecutarComando(texto) {
     }
 
     function setWeatherError() {
+        if (globalDataStatus) globalDataStatus.textContent = "CLIMA NO DISPONIBLE";
         if (!weatherText) return;
         weatherText.innerHTML = "";
         const main = document.createElement("strong");
@@ -5093,6 +5263,7 @@ function ejecutarComando(texto) {
             state.longitude = geo.longitude;
             state.timezone = geo.timezone || "America/Argentina/Buenos_Aires";
             state.city = city;
+            updateGlobeCoordinates();
 
             const params = new URLSearchParams({
                 latitude: String(geo.latitude),
@@ -5118,6 +5289,7 @@ function ejecutarComando(texto) {
             const apparent = Number(current.apparent_temperature);
             const wind = Number(current.wind_speed_10m);
             const description = weatherDescriptions[code] || "Condiciones actuales";
+            if (globalDataStatus) globalDataStatus.textContent = "DATOS ACTUALIZADOS";
 
             if (weatherText) {
                 weatherText.innerHTML = "";
