@@ -2224,12 +2224,12 @@ function answer(raw) {
     }
 
     if (
-        /quien.*cre|creador|padre/.test(
+        /quien.*(cre|program|desarroll)|creador|programador|programo|padre/.test(
             text
         )
     ) {
 
-        return "Mi creador es Fagioli Ruiz Lautaro Joel; él es mi creador y mi padre, señor.";
+        return "Me creó y programó Fagioli Ruiz Lautaro Joel, señor. VIRON está hecho con HTML, CSS y JavaScript; la interfaz está en index.html, styles.css y app.js, y el servidor usa Node.js en server.mjs.";
     }
 
     if (
@@ -2415,6 +2415,7 @@ async function requestAssistant(
         const context =
             memories();
 
+        const identityInstructions = `IDENTIDAD: te llamas VIRON. Tu creador y programador es Fagioli Ruiz Lautaro Joel. Si preguntan quién te creó o programó, responde con ese nombre. VIRON usa HTML, CSS y JavaScript; la interfaz está en index.html, styles.css y app.js, y el servidor está en server.mjs con Node.js. No inventes otros creadores ni tecnologías.`;
         const tutorInstructions = `MODO TUTOR TÉCNICO: enseña matemáticas avanzadas, inglés, química, física y materias técnicas con rigor y paciencia. Explica los pasos y el porqué, adapta la profundidad al nivel indicado, comprueba cálculos y declara supuestos. En ejercicios, guía primero y pregunta si prefiere una pista o una solución completa. No inventes ni afirmes recordar datos que no estén en el perfil o memoria. Si aún no conoces al profesor, pregunta naturalmente su nombre, materia, especialidad y estilo de clase, de a una pregunta por vez. No guardes nuevos datos personales sin permiso explícito. Si el usuario comunica datos de su perfil docente, añade al final el marcador [[VIRON_PROFILE:{"name":"","subject":"","specialty":"","birthday":"","style":""}]] rellenando solo hechos que dijo literalmente. La aplicación los mostrará para revisión y consentimiento; nunca indiques que ya quedaron guardados.`;
         const childInstructions =
             document.body.classList.contains(
@@ -2459,7 +2460,7 @@ ${context.join(" | ")}
         // ----------------------------------------------------
 
         const enrichedMessage =
-            `${assistantLanguageInstruction()}\n\n${tutorInstructions}\n\n${teacherContext(message)}${childInstructions}${memoryContext}${conversationContext}MENSAJE ACTUAL DEL USUARIO:
+            `${assistantLanguageInstruction()}\n\n${identityInstructions}\n\n${tutorInstructions}\n\n${teacherContext(message)}${childInstructions}${memoryContext}${conversationContext}MENSAJE ACTUAL DEL USUARIO:
 ${message}`;
 
         console.log(
