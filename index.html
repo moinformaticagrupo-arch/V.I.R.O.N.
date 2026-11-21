@@ -135,21 +135,28 @@
 
         <section class="command-deck">
           <div class="deck-grid"></div>
+          <svg class="core-connections" viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="linkGlow"><stop stop-color="#44dfff" stop-opacity=".08"/><stop offset=".55" stop-color="#44dfff" stop-opacity=".8"/><stop offset="1" stop-color="#44dfff" stop-opacity=".14"/></linearGradient></defs>
+            <path d="M250 215 C330 215 330 250 410 250"/><path d="M250 292 C330 292 350 292 410 292"/><path d="M250 370 C330 370 330 335 410 335"/>
+            <path d="M590 250 C685 250 690 170 790 170"/><path d="M590 292 C690 292 700 292 790 292"/><path d="M590 335 C685 335 690 395 790 395"/>
+            <circle cx="250" cy="215" r="4"/><circle cx="250" cy="292" r="4"/><circle cx="250" cy="370" r="4"/>
+            <circle cx="790" cy="170" r="4"/><circle cx="790" cy="292" r="4"/><circle cx="790" cy="395" r="4"/>
+          </svg>
           <div class="core" aria-hidden="true">
             <div class="core-axis axis-x"></div>
             <div class="core-axis axis-y"></div>
             <div class="ring ring-one"></div>
             <div class="ring ring-two"></div>
             <div class="ring ring-three"></div>
-            <div class="orb"><span>V.I.R.O.N.</span></div>
+            <div class="orb"><span>V.I.R.O.N.</span><i class="orb-mesh"></i></div>
           </div>
 
-          <div class="core-label left-label"><span>◉</span> PENSAMIENTO</div>
-          <div class="core-label left-label label-two"><span>◉</span> MEMORIA</div>
-          <div class="core-label left-label label-three"><span>◉</span> HERRAMIENTAS</div>
-          <div class="core-label right-label"><span>◉</span> Gemini</div>
-          <div class="core-label right-label label-two"><span>◉</span> OpenAI</div>
-          <div class="core-label right-label label-three"><span>◉</span> Ollama</div>
+          <div class="core-label left-label"><span>◉</span> PENSAMIENTO<svg class="core-label-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 7c-8 0-13 6-13 13 0 5 2 8 6 11v7h14v-7c4-3 6-6 6-11 0-7-5-13-13-13zM18 43h12M19 17c2-3 8-3 10 0m-9 7 5 4 5-4M8 15l-4-2m40 2 4-2M8 29l-4 2m40-2 4 2"/></svg></div>
+          <div class="core-label left-label label-two"><span>◉</span> MEMORIA<svg class="core-label-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="11" y="11" width="26" height="26" rx="3"/><rect x="18" y="18" width="12" height="12" rx="2"/><path d="M17 5v6m8-6v6m8-6v6M17 37v6m8-6v6m8-6v6M5 17h6m-6 8h6m-6 8h6m26-16h6m-6 8h6m-6 8h6"/></svg></div>
+          <div class="core-label left-label label-three"><span>◉</span> HERRAMIENTAS<svg class="core-label-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M28 8a11 11 0 0 0 12 14L25 37l-7-7 15-15A11 11 0 0 0 28 8zM9 9l9 9m-7-12 10 10M8 25l15 15m-5-18L8 32"/></svg></div>
+          <div class="core-node core-node-one" aria-hidden="true"><span>✧</span></div>
+          <div class="core-node core-node-two" aria-hidden="true"><span>⌘</span></div>
+          <div class="core-node core-node-three" aria-hidden="true"><span>⌁</span></div>
 
           <div class="system-readout">
             <p>V.I.R.O.N. PERSONAL OS</p>
