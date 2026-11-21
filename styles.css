@@ -3999,4 +3999,45 @@ body.kids-mode button { min-height: 52px; }
   .status-card { grid-column: 1; grid-row: 3; justify-self: center; width: min(100%, 200px); }
 }
 
+/* Global information module: live clock, real weather, and selected-city globe. */
+.location-panel { container-type: inline-size; border-color: rgba(0,240,255,.34); background: radial-gradient(circle at 30% 42%, rgba(0,130,190,.16), transparent 60%), linear-gradient(145deg, rgba(4,17,32,.97), rgba(2,9,19,.99)); }
+.location-panel .panel-heading { min-height: 42px; padding: 13px 13px 8px; color: #00f0ff; font: 700 10px Orbitron, monospace; letter-spacing: .12em; }
+.location-panel .panel-heading i { width: 24px; height: 2px; background: #00f0ff; box-shadow: 0 0 8px #00f0ff; }
+.global-selector-row { display: grid; grid-template-columns: minmax(0,1fr); gap: 5px; padding: 8px 12px; border-top: 1px solid rgba(0,240,255,.14); border-bottom: 1px solid rgba(0,240,255,.16); background: rgba(3,25,43,.62); }
+.global-select-group { display: grid; grid-template-columns: 66px minmax(0,1fr); align-items: center; gap: 6px; min-width: 0; }
+.global-select-group label { color: #5f9eb6; font: 700 8px monospace; letter-spacing: .1em; }
+.global-select-group select { min-width: 0; width: 100%; min-height: 25px; padding: 4px 6px; border: 1px solid rgba(37,197,255,.34); border-radius: 2px; outline: 0; color: #b9f5ff; background: #061a2a; font: 700 9px Rajdhani, sans-serif; letter-spacing: .03em; }
+.global-select-group select:focus { border-color: #42e5ff; box-shadow: 0 0 10px rgba(42,215,255,.22); }
+.global-content { display: grid; grid-template-columns: minmax(0,1fr); gap: 8px; padding: 10px 12px; }
+.planet-stage { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0; padding: 2px 0 0; isolation: isolate; }
+.planet-stage::before { content: ""; position: absolute; top: 10px; width: min(78%, 160px); aspect-ratio: 1; border: 1px solid rgba(42,208,255,.2); border-radius: 50%; box-shadow: 0 0 28px rgba(23,184,255,.12), inset 0 0 25px rgba(23,184,255,.06); pointer-events: none; }
+#holo-globe { position: relative; z-index: 1; display: block; width: min(100%, 170px); height: auto; aspect-ratio: 1; overflow: visible; }
+.geo-caption { position: relative; z-index: 2; display: grid; justify-items: center; gap: 3px; width: 100%; margin-top: -4px; text-align: center; }
+.planet-tag { color: #74cbe0; font: 700 7px Orbitron, monospace; letter-spacing: .08em; }
+.coords { color: #7da8c4; font: 7px monospace; letter-spacing: .03em; }
+.telemetry { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px; align-content: center; }
+.telemetry-item { display: flex; align-items: flex-start; gap: 6px; min-width: 0; min-height: 52px; padding: 7px 6px; border: 1px solid rgba(0,240,255,.14); border-left: 2px solid rgba(0,240,255,.6); background: linear-gradient(110deg, rgba(8,37,58,.78), rgba(3,17,30,.75)); clip-path: polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%); }
+.telemetry-icon { flex: 0 0 auto; color: #47ddff; font-size: 13px; line-height: 1; text-shadow: 0 0 8px rgba(47,220,255,.55); }
+.telemetry-item > div { min-width: 0; }
+.telemetry-item b { display: block; color: #5fa9c3; font: 700 7px monospace; letter-spacing: .06em; }
+.telemetry-item p { min-width: 0; margin: 3px 0 0; color: #d0f8ff; font: 700 9px/1.2 Rajdhani, sans-serif; overflow-wrap: anywhere; }
+.telemetry-item p strong { display: block; color: #d0f8ff; font: 700 9px/1.2 Rajdhani, sans-serif; }
+.telemetry-item p small { display: block; margin-top: 2px; color: #8eb5c5; font: 400 8px/1.25 Rajdhani, sans-serif; }
+.telemetry-item:nth-child(2) { border-left-color: #ffaa00; }
+.telemetry-item:nth-child(2) .telemetry-icon { color: #ffaa00; text-shadow: 0 0 7px rgba(255,170,0,.45); }
+#localTime { color: #fff; font: 700 10px Orbitron, monospace; letter-spacing: .04em; white-space: nowrap; }
+#globalTaskCount { color: #d0f8ff; font: 700 9px Rajdhani, sans-serif; }
+.global-footer { display: flex; justify-content: space-between; gap: 6px; padding: 7px 12px 0; border-top: 1px solid rgba(46,195,235,.12); color: #397f96; font: 700 6px monospace; letter-spacing: .035em; }
+.global-footer span:first-child { color: #46b7c9; }
+@container (min-width: 390px) {
+  .global-content { grid-template-columns: minmax(135px,.8fr) minmax(0,1.2fr); align-items: center; gap: 12px; }
+  .telemetry { grid-template-columns: minmax(0,1fr); }
+  #holo-globe { width: min(100%, 200px); }
+}
+@media (max-width: 480px) {
+  .global-content { grid-template-columns: minmax(0,1fr); }
+  .telemetry { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .global-select-group { grid-template-columns: 66px minmax(0,1fr); }
+}
+
 
