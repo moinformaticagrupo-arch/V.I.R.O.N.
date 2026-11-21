@@ -888,6 +888,7 @@ async function checkWindowsAgent() {
 
         agentState.innerHTML =
             '<i class="online-dot"></i> CONECTADO';
+        agentState.dataset.state = "online";
 
         agentDetail.textContent =
             `${data.applications?.length || 0} acciones autorizadas en esta PC`;
@@ -896,6 +897,7 @@ async function checkWindowsAgent() {
 
         agentState.innerHTML =
             '<i class="online-dot offline-dot"></i> DESCONECTADO';
+        agentState.dataset.state = "offline";
 
         agentDetail.textContent =
             "Inicie jarvis-windows-agent.mjs para abrir apps";
@@ -1169,16 +1171,17 @@ async function renderSystemStatus() {
     const ramDetail = document.querySelector("#ramDetail");
     const storageValue = document.querySelector("#siteStorage");
     const storageDetail = document.querySelector("#storageDetail");
+    const storageSummary = document.querySelector("#siteStorageDetail");
     const storageDial = document.querySelector("#storageDial");
     const networkStatus = document.querySelector("#networkStatus");
     const networkDownlink = document.querySelector("#networkDownlink");
 
     const reportedThreads = Number(navigator.hardwareConcurrency);
-    if (cpuThreads) cpuThreads.textContent = Number.isFinite(reportedThreads) && reportedThreads > 0 ? String(reportedThreads) : "No disponible";
+    if (cpuThreads) cpuThreads.textContent = Number.isFinite(reportedThreads) && reportedThreads > 0 ? String(reportedThreads) : "—";
     if (cpuDetail) cpuDetail.textContent = Number.isFinite(reportedThreads) && reportedThreads > 0 ? "hilos lógicos" : "el navegador no lo informa";
 
     const approximateRam = Number(navigator.deviceMemory);
-    if (deviceRam) deviceRam.textContent = Number.isFinite(approximateRam) && approximateRam > 0 ? `~${approximateRam} GB` : "No disponible";
+    if (deviceRam) deviceRam.textContent = Number.isFinite(approximateRam) && approximateRam > 0 ? `~${approximateRam} GB` : "—";
     if (ramDetail) ramDetail.textContent = Number.isFinite(approximateRam) && approximateRam > 0 ? "capacidad aproximada" : "el navegador no lo informa";
 
     const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
@@ -1194,14 +1197,16 @@ async function renderSystemStatus() {
         if (!Number.isFinite(usage) || !Number.isFinite(quota) || quota <= 0) throw new Error("STORAGE_ESTIMATE_UNAVAILABLE");
         const percentage = Math.min(100, Math.max(0, Math.round((usage / quota) * 100)));
         if (storageValue) storageValue.textContent = `${percentage}%`;
-        if (storageDetail) storageDetail.textContent = `${formatStorageSize(usage)} / ${formatStorageSize(quota)} · estimado`;
+        if (storageDetail) storageDetail.textContent = "estimado";
+        if (storageSummary) storageSummary.textContent = `${formatStorageSize(usage)} / ${formatStorageSize(quota)}`;
         if (storageDial) {
             const circumference = 2 * Math.PI * 76;
             storageDial.style.strokeDasharray = `${(circumference * percentage) / 100} ${circumference}`;
         }
     } catch {
-        if (storageValue) storageValue.textContent = "No disponible";
-        if (storageDetail) storageDetail.textContent = "el navegador no informa el uso";
+        if (storageValue) storageValue.textContent = "—";
+        if (storageDetail) storageDetail.textContent = "no disponible";
+        if (storageSummary) storageSummary.textContent = "No disponible";
         if (storageDial) storageDial.style.strokeDasharray = "0 478";
     }
 }
