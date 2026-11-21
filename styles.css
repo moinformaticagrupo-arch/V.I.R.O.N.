@@ -3793,4 +3793,34 @@ body.kids-mode button { min-height: 52px; }
   .dashboard-agent .dashboard-agent-detail { width: 82%; }
 }
 
+/* Compact dashboard layout: keep the cards in the original center-column slot. */
+.dashboard { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; margin-top: 12px; }
+.dashboard-card { min-height: 118px; padding: 13px 14px 12px; border-radius: 15px; }
+.dashboard-card::before { inset: 5px; border-radius: 10px; }
+.dashboard-card::after { right: 14%; width: 42px; height: 2px; }
+.dashboard-card-heading { min-height: 12px; gap: 3px; }
+.dashboard-card-heading p { font-size: 7px; letter-spacing: .11em; }
+.dashboard-card-code { font-size: 5px; }
+.dashboard-card-icon { top: 35px; right: 10px; width: 42px; height: 42px; stroke-width: 1.8; }
+.dashboard-card > strong { width: min(82%, 240px); margin: auto 0 8px; font-size: clamp(12px, 1.15vw, 15px); line-height: 1.2; }
+.dashboard-card .text-button { min-height: 29px; padding: 0 9px; border-radius: 6px; font-size: 9px; }
+.dashboard-next .text-button { width: 100%; }
+.dashboard-agent #agentState { width: 88%; margin: auto 0 5px; font-size: clamp(10px, 1.05vw, 13px); }
+.dashboard-agent #agentState .offline-dot, .dashboard-agent #agentState .online-dot:not(.offline-dot) { width: 7px; height: 7px; margin-right: 5px; }
+.dashboard-agent .dashboard-agent-detail { width: 100%; min-height: 28px; padding: 5px 7px; font-size: 8px; line-height: 1.25; }
+.dashboard-agent .dashboard-agent-detail::after { width: 26px; height: 2px; }
+.dashboard-memory > strong { font-size: clamp(16px, 1.5vw, 20px); }
+.dashboard-memory .text-button { min-width: 70px; }
+@media (max-width: 850px) {
+  .dashboard { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dashboard-card { min-height: 118px; }
+}
+@media (max-width: 560px) {
+  .dashboard { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .dashboard-card { min-height: 108px; padding: 12px 14px; }
+  .dashboard-card-icon { top: 31px; right: 16px; width: 42px; height: 42px; }
+  .dashboard-card > strong { font-size: 15px; }
+  .dashboard-agent #agentState { font-size: 13px; }
+}
+
 
