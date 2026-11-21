@@ -1,11 +1,14 @@
 // JARVIS PWA: prioriza la versión publicada y usa caché solo sin conexión.
-const CACHE = 'jarvis-v13';
+const CACHE = 'jarvis-v16';
 const CORE_FILES = [
   './',
   './index.html',
   './styles.css',
   './app.js',
-  './manifest.webmanifest'
+  './manifest.webmanifest',
+  './viron-logo.png',
+  './icon-192.png',
+  './icon-512.png'
 ];
 
 self.addEventListener('install', event => {
