@@ -3823,4 +3823,32 @@ body.kids-mode button { min-height: 52px; }
   .dashboard-agent #agentState { font-size: 13px; }
 }
 
+/* Assistant panel follows the supplied holographic control-panel reference. */
+.assistant-panel { position: relative; padding: 14px 12px 10px; border-radius: 18px; background: linear-gradient(150deg, rgba(5, 31, 51, .98), rgba(2, 12, 22, .98)); box-shadow: inset 0 0 40px rgba(21, 178, 222, .07), 0 0 20px rgba(20, 146, 193, .08); }
+.assistant-panel::before { inset: 6px; border-color: rgba(52, 199, 234, .11); border-radius: 13px; }
+.assistant-panel::after { right: 12%; width: 64px; height: 3px; box-shadow: 0 0 12px rgba(45,220,255,.75); }
+.assistant-head { position: relative; z-index: 1; min-height: 58px; gap: 10px; }
+.assistant-orb { position: relative; flex: 0 0 62px; width: 62px; height: 62px; padding: 5px; border: 1px solid rgba(53,221,255,.72); border-radius: 50%; color: var(--cyan-bright); background: radial-gradient(circle, rgba(22,169,215,.2), rgba(2,17,29,.78) 68%); box-shadow: 0 0 20px rgba(32,201,255,.25), inset 0 0 14px rgba(32,201,255,.16); }
+.assistant-orb svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1; opacity: .88; filter: drop-shadow(0 0 4px rgba(32,201,255,.7)); }
+.assistant-head strong { display: block; color: #6be9ff; font-size: clamp(17px, 2vw, 25px); font-weight: 900; letter-spacing: .05em; text-shadow: 0 0 12px rgba(32,201,255,.3); }
+.assistant-head small { display: block; margin-top: 4px; color: #88e6bd; font-size: clamp(8px, .95vw, 11px); line-height: 1.3; }
+.assistant-bubble { position: relative; z-index: 1; min-height: 72px; display: flex; flex-direction: column; justify-content: center; margin: 14px 0 9px; padding: 12px 15px; border: 1px solid rgba(69,213,245,.54); border-radius: 14px; color: #e1f5fb; background: linear-gradient(100deg, rgba(21,129,165,.25), rgba(7,37,59,.74)); box-shadow: inset 0 0 25px rgba(49,209,247,.08), 0 0 12px rgba(32,201,255,.13); font-size: clamp(11px, 1.15vw, 15px); line-height: 1.55; }
+.assistant-bubble::before, .assistant-bubble::after { content: ""; position: absolute; width: 10px; height: 10px; border-color: #7beaff; border-style: solid; opacity: .9; }
+.assistant-bubble::before { top: 5px; left: 5px; border-width: 1px 0 0 1px; }
+.assistant-bubble::after { right: 5px; bottom: 5px; border-width: 0 1px 1px 0; }
+.assistant-actions { position: relative; z-index: 1; display: grid; gap: 7px; }
+.assistant-actions button { display: grid; grid-template-columns: 43px minmax(0,1fr) 22px; align-items: center; gap: 9px; min-height: 51px; padding: 4px 8px; border: 1px solid rgba(62,158,190,.38); border-radius: 11px; color: #a7d5e5; background: linear-gradient(100deg, rgba(5,32,51,.92), rgba(3,19,33,.9)); text-align: left; font-size: clamp(9px, 1.05vw, 13px); transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease; }
+.assistant-actions button svg { display: block; width: 42px; height: 42px; padding: 5px; border: 1px solid rgba(54,176,208,.45); border-radius: 8px; fill: none; stroke: #64cce7; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; background: rgba(15,82,111,.2); }
+.assistant-actions .assistant-action-label { min-width: 0; line-height: 1.25; }
+.assistant-actions .assistant-chevron { color: #64cce7; font-size: 23px; font-weight: 800; line-height: 1; text-align: center; }
+.assistant-actions button:hover, .assistant-actions button:focus-visible { color: #e8fbff; border-color: rgba(102,231,255,.95); background: linear-gradient(100deg, rgba(14,105,135,.55), rgba(4,31,49,.96)); box-shadow: inset 0 0 16px rgba(54,205,240,.12), 0 0 16px rgba(49,205,240,.22); outline: none; }
+.assistant-actions button:hover svg, .assistant-actions button:focus-visible svg { stroke: #a0f3ff; border-color: #58daf8; }
+.assistant-actions button:hover .assistant-chevron, .assistant-actions button:focus-visible .assistant-chevron { color: #9cf2ff; text-shadow: 0 0 10px rgba(56,218,250,.85); }
+.assistant-panel .waveform { position: relative; z-index: 1; height: 42px; margin: 12px 2px 0; opacity: .95; background: repeating-linear-gradient(90deg, transparent 0 4px, rgba(47,204,242,.82) 4px 6px, transparent 6px 10px); mask-image: linear-gradient(90deg, transparent, black 9%, black 91%, transparent); filter: drop-shadow(0 0 5px rgba(38,202,239,.55)); }
+@media (max-width: 480px) {
+  .assistant-panel { padding: 12px 10px 8px; }
+  .assistant-orb { flex-basis: 54px; width: 54px; height: 54px; }
+  .assistant-actions button { min-height: 48px; grid-template-columns: 42px minmax(0,1fr) 20px; }
+}
+
 
