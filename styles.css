@@ -3899,4 +3899,54 @@ body.kids-mode button { min-height: 52px; }
   .status-card { grid-column: 1; grid-row: 3; justify-self: center; align-self: center; width: min(100%, 210px); margin: 0; }
 }
 
+/* Match the reference composition while keeping the provider names hidden. */
+.command-deck { min-height: 550px; grid-template-columns: minmax(220px, .82fr) minmax(340px, 1.5fr) minmax(130px, .62fr); grid-template-rows: repeat(3, 1fr); padding: 30px 26px; background-color: #03101d; background-image: linear-gradient(rgba(41,156,193,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(41,156,193,.035) 1px, transparent 1px), radial-gradient(ellipse at 51% 49%, rgba(14,99,147,.22), transparent 47%), linear-gradient(135deg, #061b2b, #020c16 72%); background-size: 22px 22px, 22px 22px, auto, auto; }
+.command-deck::before { inset: 16px; border-color: rgba(71,177,207,.2); border-radius: 3px; }
+.command-deck::after { width: 16%; height: 3px; opacity: .8; background: #35dfff; box-shadow: 0 0 14px #21d4ff; }
+.core-connections { z-index: 1; stroke-width: 1.35; filter: drop-shadow(0 0 6px rgba(48,203,241,.62)); }
+.core { width: min(100%, 430px); height: min(100%, 430px); }
+.ring-one { width: 62%; height: 62%; }
+.ring-two { width: 81%; height: 81%; border-style: dashed; }
+.ring-three { width: 99%; height: 99%; }
+.orb { width: clamp(190px, 22vw, 232px); height: clamp(190px, 22vw, 232px); }
+.core-label { font-size: 10px; letter-spacing: .03em; }
+.left-label:not(.label-two):not(.label-three) { top: 43%; }
+.left-label.label-two { top: 57%; }
+.left-label.label-three { top: 71%; }
+.core-label-icon { left: calc(100% + 50px); width: 58px; height: 58px; padding: 8px; border-radius: 10px; border-color: rgba(76,214,244,.68); background: linear-gradient(145deg, rgba(8,42,64,.94), rgba(2,13,24,.98)); box-shadow: 0 0 15px rgba(32,201,255,.13), inset 0 0 12px rgba(42,190,224,.16); }
+.core-node { right: 10%; width: 46px; height: 46px; border-radius: 5px; border-color: rgba(115,205,232,.8); background: rgba(4,21,36,.96); box-shadow: 0 0 12px rgba(32,201,255,.15), inset 0 0 10px rgba(32,201,255,.1); }
+.core-node-one { top: 27%; }
+.core-node-two { top: 49%; }
+.core-node-three { top: 71%; }
+.core-node svg { width: 31px; height: 31px; fill: none; stroke: #b8e9f7; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 4px rgba(76,208,241,.35)); }
+.system-readout { margin-top: 42px; padding-left: 18px; border-left-width: 4px; }
+.system-readout p { margin-bottom: 13px; font-size: 10px; }
+.system-readout strong { max-width: 255px; font-size: clamp(27px, 3.1vw, 40px); }
+.system-readout small { margin-top: 15px; font-size: 9px; }
+.status-card { width: min(100%, 178px); margin-bottom: 10px; padding: 15px; }
+.status-card b { font-size: 16px; }
+@media (max-width: 850px) {
+  .command-deck { min-height: 510px; grid-template-columns: minmax(170px, .8fr) minmax(240px, 1.4fr) minmax(76px, .5fr); grid-template-rows: repeat(3, 1fr); padding: 22px 18px; }
+  .core { grid-column: 2; grid-row: 1 / span 3; width: min(100%, 350px); height: min(100%, 350px); }
+  .orb { width: clamp(160px, 24vw, 195px); height: clamp(160px, 24vw, 195px); }
+  .core-label { display: flex; font-size: 8px; }
+  .left-label { left: 3%; }
+  .core-label-icon { left: calc(100% + 20px); width: 38px; height: 38px; padding: 5px; }
+  .core-node { right: 7%; width: 34px; height: 34px; }
+  .core-node svg { width: 24px; height: 24px; }
+  .core-connections { display: block; }
+  .system-readout { grid-column: 1; grid-row: 1; margin-top: 30px; text-align: left; }
+  .system-readout strong { font-size: clamp(20px, 3vw, 28px); }
+  .status-card { grid-column: 3; grid-row: 3; justify-self: end; width: min(100%, 130px); }
+}
+@media (max-width: 600px) {
+  .command-deck { min-height: 470px; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(190px, 1fr) auto auto; gap: 8px; padding: 20px 14px; }
+  .core { grid-column: 1; grid-row: 1; width: min(72vw, 250px); height: min(72vw, 250px); }
+  .orb { width: clamp(130px, 42vw, 165px); height: clamp(130px, 42vw, 165px); }
+  .core-label, .core-node, .core-connections { display: none; }
+  .system-readout { grid-column: 1; grid-row: 2; justify-self: center; margin: 0; padding: 0; border: 0; text-align: center; }
+  .system-readout strong { max-width: none; font-size: clamp(23px, 7vw, 30px); }
+  .status-card { grid-column: 1; grid-row: 3; justify-self: center; width: min(100%, 200px); margin: 0; }
+}
+
 
