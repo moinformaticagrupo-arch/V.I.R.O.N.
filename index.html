@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#030b14" />
   <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
   <link rel="stylesheet" href="styles.css" />
   <title>V.I.R.O.N. — Tutor técnico</title>
 </head>
@@ -12,9 +13,7 @@
   <main class="shell">
     <header class="topbar">
       <div class="brand-block">
-        <p class="eyebrow"><i></i> V.I.R.O.N. PERSONAL OPERATING SYSTEM</p>
-        <h1>V.I.R.O.N.</h1>
-        <p class="tagline">Tu asistente. Siempre contigo.</p>
+        <img class="brand-logo" src="viron-logo.png" alt="V.I.R.O.N., asistente personal profesional" />
       </div>
 
       <div class="header-center">
@@ -69,6 +68,36 @@
             </div>
           </div>
           <div class="global-footer"><span>● SISTEMA DE GEOLOCALIZACIÓN ACTIVO</span><span>SECURE LINK</span></div>
+        </section>
+
+        <section class="hud-panel system-panel system-compact-layout" aria-label="Estado del sistema">
+          <div class="panel-heading"><span>ESTADO DEL SISTEMA</span><i></i></div>
+          <div class="system-gauges">
+            <article class="system-gauge">
+              <div class="system-dial system-dial-cpu">
+                <svg viewBox="0 0 180 180" aria-hidden="true"><circle class="dial-track" cx="90" cy="90" r="76"></circle><circle class="dial-ticks" cx="90" cy="90" r="66"></circle><circle class="dial-accent" cx="90" cy="90" r="76"></circle></svg>
+                <div class="system-dial-value"><span>CPU</span><b id="cpuThreads">—</b><small id="cpuDetail">Hilos no informados</small></div>
+              </div>
+            </article>
+            <article class="system-gauge">
+              <div class="system-dial system-dial-ram">
+                <svg viewBox="0 0 180 180" aria-hidden="true"><circle class="dial-track" cx="90" cy="90" r="76"></circle><circle class="dial-ticks" cx="90" cy="90" r="66"></circle><circle class="dial-accent" cx="90" cy="90" r="76"></circle></svg>
+                <div class="system-dial-value"><span>RAM</span><b id="deviceRam">—</b><small id="ramDetail">No informada</small></div>
+              </div>
+            </article>
+            <article class="system-gauge">
+              <div class="system-dial system-dial-storage">
+                <svg viewBox="0 0 180 180" aria-hidden="true"><circle class="dial-track" cx="90" cy="90" r="76"></circle><circle class="dial-ticks" cx="90" cy="90" r="66"></circle><circle class="dial-storage" id="storageDial" cx="90" cy="90" r="76"></circle></svg>
+                <div class="system-dial-value"><span>SITIO</span><b id="siteStorage">—</b><small id="storageDetail">Uso estimado</small></div>
+              </div>
+            </article>
+          </div>
+          <div class="system-readouts">
+            <div><span class="readout-icon">⌁</span><span>Internet</span><b id="networkStatus">Comprobando…</b></div>
+            <div><span class="readout-icon">↓</span><span>Descarga aprox.</span><b id="networkDownlink">No disponible</b></div>
+            <div><span class="readout-icon">▣</span><span>Uso del sitio</span><b id="siteStorageDetail">No disponible</b></div>
+          </div>
+          <small class="system-privacy-note">CPU/RAM: sin uso porcentual disponible. Almacenamiento del sitio: estimado.</small>
         </section>
 
         <section class="hud-panel memory-mini memory-reference-layout" aria-label="Memoria guardada">
@@ -185,39 +214,6 @@
           </div>
         </section>
       </aside>
-    </section>
-
-    <section class="hud-panel system-panel system-reference-layout" aria-label="Estado del sistema">
-      <div class="panel-heading"><span>ESTADO DEL SISTEMA</span><i></i></div>
-      <div class="system-gauges">
-        <article class="system-gauge">
-          <div class="system-dial system-dial-cpu">
-            <svg viewBox="0 0 180 180" aria-hidden="true"><circle class="dial-track" cx="90" cy="90" r="76"></circle><circle class="dial-ticks" cx="90" cy="90" r="66"></circle><circle class="dial-accent" cx="90" cy="90" r="76"></circle></svg>
-            <div class="system-dial-value"><span>CPU</span><b id="cpuThreads">—</b><small id="cpuDetail">Hilos no informados</small></div>
-          </div>
-          <p class="system-gauge-caption">HILOS LÓGICOS · USO NO DISPONIBLE</p>
-        </article>
-        <article class="system-gauge">
-          <div class="system-dial system-dial-ram">
-            <svg viewBox="0 0 180 180" aria-hidden="true"><circle class="dial-track" cx="90" cy="90" r="76"></circle><circle class="dial-ticks" cx="90" cy="90" r="66"></circle><circle class="dial-accent" cx="90" cy="90" r="76"></circle></svg>
-            <div class="system-dial-value"><span>RAM</span><b id="deviceRam">—</b><small id="ramDetail">No informada</small></div>
-          </div>
-          <p class="system-gauge-caption">RAM APROX. · USO NO DISPONIBLE</p>
-        </article>
-        <article class="system-gauge">
-          <div class="system-dial system-dial-storage">
-            <svg viewBox="0 0 180 180" aria-hidden="true"><circle class="dial-track" cx="90" cy="90" r="76"></circle><circle class="dial-ticks" cx="90" cy="90" r="66"></circle><circle class="dial-storage" id="storageDial" cx="90" cy="90" r="76"></circle></svg>
-            <div class="system-dial-value"><span>V.I.R.O.N.</span><b id="siteStorage">—</b><small id="storageDetail">Almacenamiento del sitio</small></div>
-          </div>
-          <p class="system-gauge-caption">ALMACENAMIENTO ESTIMADO DE ESTE SITIO</p>
-        </article>
-      </div>
-      <div class="system-readouts">
-        <div><span class="readout-icon">⌁</span><span>Estado de internet</span><b id="networkStatus">Comprobando…</b></div>
-        <div><span class="readout-icon">↓</span><span>Descarga estimada</span><b id="networkDownlink">No disponible</b></div>
-        <div><span class="readout-icon">↑</span><span>Velocidad de subida</span><b>No expuesta por el navegador</b></div>
-      </div>
-      <small class="system-privacy-note">Los anillos de CPU y RAM son visuales, no porcentajes. El navegador no expone el uso real de CPU/RAM, el disco completo ni los procesos del dispositivo.</small>
     </section>
 
     <section class="bottom-grid">
