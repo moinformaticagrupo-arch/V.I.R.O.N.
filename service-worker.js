@@ -1,5 +1,5 @@
 // JARVIS PWA: prioriza la versión publicada y usa caché solo sin conexión.
-const CACHE = 'jarvis-v19';
+const CACHE = 'jarvis-v20';
 const CORE_FILES = [
   './',
   './index.html',
